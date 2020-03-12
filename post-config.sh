@@ -100,7 +100,7 @@ if [ -d /home/$UN/ ]; then
   sudo ln -sf /home/$UN/.config/vifm /root/.config
   #
   # --- instal PLUG for VIM -------------------------------------------------
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fLo /home/$UN/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   # --- prepare the PLUGIN- and COC.NVIM install ----------------------------
   sudo curl -sL install-node.now.sh | sudo bash
   curl --compressed -o- -L https://yarnpkg.com/install.sh | bash && yarn
