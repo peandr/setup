@@ -32,14 +32,11 @@ if [ -d /home/$UN/ ]; then
 
 	install powerline
 
-	if [ ! -d /home/$UN/src/ ]; then
-		mkdir src
-		cd src
+	cd /home/$UN/git
 		git clone https://github.com/powerline/fonts.git
 		cd fonts
 		./install.sh
-		cd ../../
-	fi
+	cd ../
 
 	sudo grep $UN /etc/sudoers &> /dev/null
 	if [ $? -ne 0  ]; then
