@@ -108,6 +108,7 @@ if [ -d /home/$UN/ ]; then
   #
   # --- put the folder UltiSnips in the right place -------------------------
   mv /home/$UN/.config/vim/UltiSnips /home/$UN/.vim/plugged/ultisnips
+	sudo reboot
 else
   echo " User $UN does NOT exist on host $HOSTNAME!"
 fi

@@ -58,6 +58,7 @@ if [ -d /home/$UN/ ]; then
 	if [ $? -ne 0 ]; then
 		echo "$UN  ALL=(ALL:ALL) ALL" >> /etc/sudoers
 	fi
+	sudo chown -R $UN:$UN /home/$UN/git
 else
 	echo " User $UN does NOT exist on $HOSTNAME!"
 	exit
