@@ -6,6 +6,9 @@
 # ---   author: p. andree
 # ------------------------------------------------------------------------------
 
+# --- user to be configured
+UN="?"
+
 pinstall() {
   which $1 > /dev/null
   if [ $? -ne 0 ]; then
@@ -41,6 +44,6 @@ sysrc dbus_enable=yes
 
 grep peandr /usr/local//etc/sudoers > /dev/null
 if [ $? -ne 0 ]; then
-	  echo "peandr  ALL=(ALL:ALL) ALL" >> /usr/local//etc/sudoers
+	  echo "$UN  ALL=(ALL:ALL) ALL" >> /usr/local//etc/sudoers
 fi
 reboot
