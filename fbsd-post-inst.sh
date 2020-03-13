@@ -39,11 +39,13 @@ pinstall bash
 pinstall pkgconf
 pinstall recode
 
-chsh -s /usr/local/bin/bash
+chsh -s /usr/local/bin/bash root
+chsh -s /usr/local/bin/bash peandr
+
 sysrc dbus_enable=yes
 
-grep peandr /usr/local//etc/sudoers > /dev/null
+grep peandr /usr/local/etc/sudoers > /dev/null
 if [ $? -ne 0 ]; then
-	  echo "$UN  ALL=(ALL:ALL) ALL" >> /usr/local//etc/sudoers
+	  echo "$UN  ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
 fi
 reboot
