@@ -38,7 +38,6 @@ if [ -d /home/$UN/ ]; then
 	pinstall sudo
 	pinstall wget
 	pinstall rsync
-	pinstall vim-console
 	pinstall htop
 	pinstall vifm
 	pinstall tmux
@@ -49,7 +48,24 @@ if [ -d /home/$UN/ ]; then
 	pinstall bash
 	pinstall pkgconf
 	pinstall recode
+	pinstall python
+	pinstall yarn
 
+	if [ ! -d /home/$UN/git/vim/ ]; then
+	  git clone https://github.com/vim/vim.git
+	  cd vim/src/
+	  ./configure --with-features=huge --enable-multibyte --enable-python3interp=yes --with-python3-config-dir=$(python3-config --configdir) --prefix=/usr/local
+	  make install clean
+	  cd ../../
+	fi
+
+	if [ ! -d /home/$UN/git/fonts/ ]; then
+	  git clone https://github.com/powerline/fonts.git
+	  cd fonts
+	  ./install.sh
+ 	  cd ../
+	fi
+	
 	chsh -s /usr/local/bin/bash root
 	chsh -s /usr/local/bin/bash peandr
 
