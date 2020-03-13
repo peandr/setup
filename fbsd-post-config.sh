@@ -29,14 +29,10 @@ if [ -d /home/$UN/ ]; then
   # --------------------------------------------------------------------------
 
   # --- config BASH for root and user ----------------------------------------
-	sudo grep 'source' /root/.bashrc
+	grep 'source' /home/$UN/.bash_profile
 	if [ $? -ne 0 ]; then
-    echo "source /home/$UN/.config/bash/bashrc-glob" >> /root/.bashrc
-	fi
-	grep 'source' /home/$UN/.bashrc
-	if [ $? -ne 0 ]; then
-    echo "source /home/$UN/.config/bash/bashrc-glob" >> /home/$UN/.bashrc
-    echo "source /home/$UN/.config/bash/.bashrc-pa"   >> /home/$UN/.bashrc
+    echo "source /home/$UN/.config/bash/bashrc-glob" >> /home/$UN/.bash_profile
+    echo "source /home/$UN/.config/bash/.bashrc-pa" >> /home/$UN/.bash_profile
   fi
   # --------------------------------------------------------------------------
 

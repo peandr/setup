@@ -65,8 +65,7 @@ if [ -d /home/$UN/ ]; then
 	  ./install.sh
  	  cd ../
 	fi
-	
-	chsh -s /usr/local/bin/bash root
+
 	chsh -s /usr/local/bin/bash peandr
 
 	sysrc dbus_enable=yes
