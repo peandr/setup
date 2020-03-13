@@ -5,47 +5,60 @@
 # --- last ver: 2020-03-11
 # ---   author: p. andree
 # ------------------------------------------------------------------------------
+clear
+HN=`hostname`
 
 # --- user to be configured
-UN="?"
+UN=""
 
-pinstall() {
-  which $1 > /dev/null
-  if [ $? -ne 0 ]; then
-    echo "Installing: ${1}"
-    pkg install -y $1
-  else
-    echo "Already installed on $HOSTNAME: ${1}"
-  fi
-}
+echo " ------------------------------------------------------------------------"
+echo " `uname -a`"
+echo " --------------------------------------------------------- "
+echo " Installing programs and adjusting SUDOERS"
+echo " Hostname: $HN"
+echo " --------------------------------------------------------- "
+read -p " Username: " UN
 
-freebsd-update fetch
-freebsd-update install
-pkg update
-pkg upgrade -y
+if [ -d /home/$UN/ ]; then
+	pinstall() {
+	  which $1 > /dev/null
+	  if [ $? -ne 0 ]; then
+	    echo "Installing: ${1}"
+	    pkg install -y $1
+	  else
+	    echo "Already installed on $HOSTNAME: ${1}"
+	  fi
+	}
 
-pinstall sudo
-pinstall wget
-pinstall rsync
-pinstall vim-console
-pinstall htop
-pinstall vifm
-pinstall tmux
-pinstall git
-pinstall curl
-pinstall neofetch
-pinstall dbus
-pinstall bash
-pinstall pkgconf
-pinstall recode
+	freebsd-update fetch
+	freebsd-update install
+	pkg update
+	pkg upgrade -y
 
-chsh -s /usr/local/bin/bash root
-chsh -s /usr/local/bin/bash peandr
+	pinstall sudo
+	pinstall wget
+	pinstall rsync
+	pinstall vim-console
+	pinstall htop
+	pinstall vifm
+	pinstall tmux
+	pinstall git
+	pinstall curl
+	pinstall neofetch
+	pinstall dbus
+	pinstall bash
+	pinstall pkgconf
+	pinstall recode
 
-sysrc dbus_enable=yes
+	chsh -s /usr/local/bin/bash root
+	chsh -s /usr/local/bin/bash peandr
 
-grep peandr /usr/local/etc/sudoers > /dev/null
-if [ $? -ne 0 ]; then
-	  echo "$UN  ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
+	sysrc dbus_enable=yes
+
+	grep $UN /usr/local/etc/sudoers > /dev/null
+	if [ $? -ne 0 ]; then
+		  echo "$UN  ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
+	fi
+else
+	echo " User $UN does NOT exist on $HN!"
 fi
-reboot

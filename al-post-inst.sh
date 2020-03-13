@@ -14,7 +14,6 @@ echo " --------------------------------------------------------- "
 echo " Installing programs and adjusting SUDOERS"
 echo " Hostname: $HOSTNAME"
 echo " --------------------------------------------------------- "
-echo " Hostname: $HOSTNAME"
 read -p " Username: " UN
 
 if [ -d /home/$UN/ ]; then
