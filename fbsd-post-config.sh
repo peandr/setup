@@ -29,6 +29,11 @@ if [ -d /home/$UN/ ]; then
   # --------------------------------------------------------------------------
 
   # --- config BASH for root and user ----------------------------------------
+	sudo grep 'source' /root/.cshrc
+	if [ $? -ne 0 ]; then
+    sudo "echo ""source /home/$UN/.config/bash/.cshrc-root"" >> /root/.cshrc"
+  fi
+
 	grep 'source' /home/$UN/.bash_profile
 	if [ $? -ne 0 ]; then
     echo "source /home/$UN/.config/bash/bashrc-glob" >> /home/$UN/.bash_profile
