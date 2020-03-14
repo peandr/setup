@@ -31,8 +31,8 @@ if [ -d /home/$UN/ ]; then
 	}
 
 	freebsd-update fetch
-	freebsd-update install -y
-	pkg update -y
+	freebsd-update install
+	pkg update
 	pkg upgrade -y
 	portsnap fetch
 	portsnap extract
@@ -45,13 +45,13 @@ if [ -d /home/$UN/ ]; then
 	pinstall vifm
 	pinstall tmux
 	pinstall git
-	pinstall curl
+	#pinstall curl				# installed by git
 	pinstall neofetch
 	pinstall dbus
 	pinstall bash
 	pinstall pkgconf
 	pinstall recode
-	pinstall python
+	pinstall python				# imperativ for vim: needed by UltiSnips with tex
 	pinstall yarn
 
 	if [ ! -d /home/$UN/git/vim/ ]; then
