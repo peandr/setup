@@ -29,7 +29,7 @@ if [ -d /home/$UN/ ]; then
   # --------------------------------------------------------------------------
 
   # --- config BASH for root and user ----------------------------------------
-	sudo grep 'source' /root/.cshrc
+	sudo grep '.cshrc-root' /root/.cshrc
 	if [ $? -ne 0 ]; then
     sudo csh -c "echo ""source /home/$UN/.config/bash/.cshrc-root"" >> /root/.cshrc"
   fi
