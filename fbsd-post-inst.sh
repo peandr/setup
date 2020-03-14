@@ -31,9 +31,12 @@ if [ -d /home/$UN/ ]; then
 	}
 
 	freebsd-update fetch
-	freebsd-update install
-	pkg update
+	freebsd-update install -y
+	pkg update -y
 	pkg upgrade -y
+	portsnap fetch
+	portsnap extract
+	portsnap update
 
 	pinstall sudo
 	pinstall wget
