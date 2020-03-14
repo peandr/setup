@@ -19,13 +19,13 @@ read -p " Username: " UN
 
 if [ -d /home/$UN/ ]; then
   # --- clone the dotfiles-repo ----------------------------------------------
-  git clone https://github.com/peandr/dotfiles.git
+  wget https://raw.github.com/peandr/dotfiles/master/linux-dotfiles.tar.gz
   if [ ! -d /home/$UN/.config/  ]; then
 		mkdir /home/$UN/.config
   fi
-  tar -C /home/$UN/.config/ -xvf dotfiles/dotfiles.tar.gz
-  sudo rm -r dotfiles/
-  rm /home/$UN/.config/dotfiles.tar.gz
+  tar -C /home/$UN/.config/ -xvf linux-dotfiles.tar.gz
+  sudo rm -r linux-dotfiles.tar.gz
+  rm /home/$UN/.config/linux-dotfiles.tar.gz
   # --------------------------------------------------------------------------
 
   # --- config BASH for root and user

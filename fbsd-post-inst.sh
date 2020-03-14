@@ -52,6 +52,7 @@ if [ -d /home/$UN/ ]; then
 	pinstall pkgconf
 	pinstall recode
 	pinstall python				# imperativ for vim: needed by UltiSnips with tex
+        pinstall node
 	pinstall yarn
 
 	if [ ! -d /home/$UN/git/vim/ ]; then
