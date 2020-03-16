@@ -38,6 +38,7 @@ if [ -d /home/$UN/ ]; then
 	if [ $? -ne 0 ]; then
     echo "source /home/$UN/.config/bash/bashrc-glob" >> /home/$UN/.bash_profile
     echo "source /home/$UN/.config/bash/.bashrc-pa" >> /home/$UN/.bash_profile
+    ln -sf /home/$UN/.bash_profile .bashrc
   fi
   # --------------------------------------------------------------------------
 
