@@ -38,8 +38,11 @@ if [ -d /home/$UN/ ]; then
 	if [ $? -ne 0 ]; then
     echo "source /home/$UN/.config/bash/bashrc-glob" >> /home/$UN/.bash_profile
     echo "source /home/$UN/.config/bash/.bashrc-pa" >> /home/$UN/.bash_profile
-    ln -sf /home/$UN/.bash_profile .bashrc
   fi
+	if [ -f /home/$UN/.bashrc ]; then
+		rm /home/$UN/.bashrc
+	fi
+  ln -sf /home/$UN/.bash_profile /home/$UN/.bashrc
   # --------------------------------------------------------------------------
 
   # --- config VIMRC for root and user ---------------------------------------
