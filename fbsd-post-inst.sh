@@ -79,8 +79,8 @@ if [ -d /home/$UN/ ]; then
 	if [ $? -ne 0 ]; then
 		  echo "$UN  ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
 	fi
-	echo "autoboot_delay="1""  >> /boot/loader.conf
-	echo "kern.vty="vt""  >> /boot/loader.conf
+	echo 'autoboot_delay="1"'  >> /boot/loader.conf
+	echo 'kern.vty="vt"'  >> /boot/loader.conf
 
 else
 	echo " User $UN does NOT exist on $HN!"
