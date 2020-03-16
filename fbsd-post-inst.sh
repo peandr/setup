@@ -49,6 +49,7 @@ if [ -d /home/$UN/ ]; then
 	pinstall bash
 	pinstall pkgconf
 	pinstall recode
+	pinstall doas
 
 	chsh -s /usr/local/bin/bash root
 	chsh -s /usr/local/bin/bash peandr
@@ -59,7 +60,10 @@ if [ -d /home/$UN/ ]; then
 	if [ $? -ne 0 ]; then
 		  echo "$UN  ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
 	fi
+	cat "autoboot_delay="1"" >> /boot/loader.conf
+	cat "kern.vty="vt"" >> /boot/loader.conf
+
 	reboot
-else 
+else
 	echo " User $UN does NOT exist on $HN!"
 fi
