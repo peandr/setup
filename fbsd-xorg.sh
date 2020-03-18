@@ -14,6 +14,7 @@ if [ $UN != "?" ]; then
 	pkg install -y gpu-firmware-kmod
 	pkg install -y drm-kmod
 	sysrc kld_list="amdgpu"
+	sudo csh -c "echo ""hw.syscons.disable=1"" >> /boot/loader.conf"
 	pw groupmod  video -M $UN
 
 	pkg install -y zathura
@@ -28,7 +29,12 @@ if [ $UN != "?" ]; then
 		mkdir /home/$UN/pictures
 	fi
 	echo " Copy some wallpapers to the host!"
-	scp -P 47513 $UN@raspberrypi:/home/$UN/how-to-files/wallpapers/*.jpg /home/$UN/pictures
+	wget http://raspberrypi/sh/wallpapers.tar.gz
+	if [ ! -d /home/$UN/pictures/ ]; then
+		mkdir /home/peandr/pictures
+	fi
+	chown -R peandr:peandr /home/$UN/pictures
+	tar -C /home/$UN/pictures -xvf wallpapers.tar.gz
 	if [ ! -d /root/src/ ]; then
 		mkdir src
 	fi
