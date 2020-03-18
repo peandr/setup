@@ -43,6 +43,10 @@ if [ -d /home/$UN/ ]; then
 		rm /home/$UN/.bashrc
 	fi
   ln -sf /home/$UN/.bash_profile /home/$UN/.bashrc
+	# --- symbolik links for bash and perl
+	sudo ln -sf /usr/local/bin/bash /bin/bash
+	sudo ln -sf /usr/local/bin/bash /usr/bin/perl
+
   # --------------------------------------------------------------------------
 
   # --- config VIMRC for root and user ---------------------------------------
@@ -102,6 +106,8 @@ if [ -d /home/$UN/ ]; then
   #
   # --- put the folder UltiSnips in the right place -------------------------
   mv /home/$UN/.config/vim/UltiSnips /home/$UN/.vim/plugged/ultisnips
+	sudo "echo ""permit nopass peandr cmd shutdown"" >> /usr/local/etc/doas.conf"
+	sudo "echo ""permit nopass peandr cmd pkg"" >> /usr/local/etc/doas.conf"
   #sudo reboot
 else
   echo " User $UN does NOT exist on host $HOSTNAME!"
