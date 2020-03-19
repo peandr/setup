@@ -19,7 +19,7 @@ if [ $UN != "?" ]; then
 
 	pkg install -y zathura
 	pkg install -y zathura-pdf-poppler
-	pkk install -y feh
+	pkg install -y feh
   # may be all necessary fonts
 	pkg install -y dejavu
 	pkg install -y dmenu
