@@ -23,6 +23,9 @@ if [ $UN != "?" ]; then
   # may be all necessary fonts
 	pkg install -y dejavu
 	pkg install -y dmenu
+	pkg install -y meld
+	pkg install -y scrot
+	pkg install -y freecolor
 
 	pkg install -y aspell en-aspell de-aspell
 	if [ ! -d /home$UN/pictures/ ]; then
@@ -42,6 +45,6 @@ if [ $UN != "?" ]; then
 	mv install-tl-unx.tar.gz src/
 	tar -C src/ -xvf src/install-tl-unx.tar.gz
 else
-	echo "Specify the USER for video group!"
+	echo "Load the script and SPECIFY the USER for video group!"
 fi
 
