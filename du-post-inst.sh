@@ -34,6 +34,7 @@ if [ -d /home/$UN/ ]; then
 
 	# --- installl the necessary software ------------------------------------------
 	install sudo
+	install vim-nox
 	install tmux
 	install ranger
 	install vifm
@@ -45,6 +46,8 @@ if [ -d /home/$UN/ ]; then
 	install recode
 	install neofetch
 	install powerline
+	# install build-essential
+	# sudo apt-get install libncurses5-dev libncursesw5-dev
 
 	grep $UN /etc/sudoers &> /dev/null
 	if [ $? -ne 0 ]; then
