@@ -34,7 +34,6 @@ if [ -d /home/$UN/ ]; then
 
 	# --- installl the necessary software ------------------------------------------
 	install sudo
-	install vim
 	install tmux
 	install ranger
 	install vifm
@@ -52,6 +51,13 @@ if [ -d /home/$UN/ ]; then
 		echo "$UN  ALL=(ALL:ALL) ALL" >> /etc/sudoers
 	fi
 	sudo chown -R $UN:$UN /home/$UN/git
+	if [ ! -d /home/$UN/git/vim/ ]; then
+	  git clone https://github.com/vim/vim.git
+	  cd vim/src/
+	  ./configure --with-features=huge --enable-multibyte --enable-python3interp=yes --prefix=/usr/local
+	  make install clean
+	  cd ../../
+	fi
 else
 	echo " User $UN does NOT exist on $HOSTNAME!"
 	exit
