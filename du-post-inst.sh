@@ -47,13 +47,6 @@ if [ -d /home/$UN/ ]; then
 	install neofetch
 	install powerline
 
-	if [ ! -d fonts/ ]; then
-		git clone https://github.com/powerline/fonts.git
-		cd fonts
-		./install.sh
-		cd ../
-	fi
-
 	grep $UN /etc/sudoers &> /dev/null
 	if [ $? -ne 0 ]; then
 		echo "$UN  ALL=(ALL:ALL) ALL" >> /etc/sudoers

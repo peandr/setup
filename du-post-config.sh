@@ -108,6 +108,14 @@ if [ -d /home/$UN/ ]; then
   #
   # --- put the folder UltiSnips in the right place -------------------------
   mv /home/$UN/.config/vim/UltiSnips /home/$UN/.vim/plugged/ultisnips
+
+	# --- install patched powerline-fonts -------------------------------------
+	if [ ! -d fonts/ ]; then
+		git clone https://github.com/powerline/fonts.git
+		cd fonts
+		./install.sh
+		cd ../
+	fi
 	sudo reboot
 else
   echo " User $UN does NOT exist on host $HOSTNAME!"
