@@ -116,6 +116,9 @@ if [ -d /home/$UN/ ]; then
 		./install.sh
 		cd ../
 	fi
+	[ ! -d /root/.config/neofetch/ ] && sudo mkdir /root/.config/neofetch
+  sudo ln -sf /home/peandr/.config/neofetch/config.conf /root/.config/neofetch/config.conf
+	mkdir /home/$UN/{documents,downloads,pictures}
 	sudo reboot
 else
   echo " User $UN does NOT exist on host $HOSTNAME!"
