@@ -56,6 +56,10 @@ if [ -d /home/$UN/ ]; then
 	pinstall yarn
 	pinstall doas
 
+	which ranger > /dev/null
+	if [ $? -ne 0 ]; then
+		pkg install -y py37-ranger
+	fi
 	if [ ! -d /home/$UN/git/vim/ ]; then
 	  git clone https://github.com/vim/vim.git
 	  cd vim/src/

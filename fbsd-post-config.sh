@@ -70,13 +70,6 @@ if [ -d /home/$UN/ ]; then
   if [ ! -d /home/$UN/.vim/ ]; then
     mkdir /home/$UN/.vim
   fi
-  # --- adjust UMLAUTE, only for german -------------------------------------
-  if [ ! -d /home/$UN/.vim/plugin/ ]; then
-   mkdir /home/$UN/.vim/plugin
-  fi
-  if [ ! -f /home/$UN/.vim/plugin/html-umlaute.vim ]; then
-    mv /home/$UN/.config/vim/html-umlaute.vim /home/$UN/.vim/plugin
-  fi
   #
   # --- config TMUX for root and user  --------------------------------------
   if [ -f /root/.tmux.conf ]; then
@@ -96,6 +89,7 @@ if [ -d /home/$UN/ ]; then
     sudo rm /root/.config/vifm
   fi
   sudo ln -sf /home/$UN/.config/vifm /root/.config
+  sudo ln -sf /home/$UN/.config/ranger /root/.config
   #
   # --- instal PLUG for VIM -------------------------------------------------
   curl -fLo /home/$UN/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
