@@ -49,7 +49,7 @@ if [ -d /home/$UN/ ]; then
 	else
 		rm .bashrc
   fi
-	ln -sf /home/$UN/.config/bash/.bashrc-pa .bashrc
+	ln -sf /home/$UN/.config/bash/.bashrc-pa /home/$UN/.bashrc
   #cp /home/$UN/.bashrc.ori /home/$UN/.bashrc
   #echo "source /home/$UN/.config/bash/.bashrc-pa" >> /home/$UN/.bashrc
   # --------------------------------------------------------------------------
