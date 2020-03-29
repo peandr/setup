@@ -30,7 +30,7 @@ if [ -d /home/$UN/ ]; then
 
   # --- config BASH for root and user
   POWERLINEPATH=`sudo find /usr -name powerline.sh | grep 'bash'`
-  sudo sed -i "s|powerlinepath|$POWERLINEPATH|g" /home/$UN//.config/bash/bashrc-glob
+  sudo sed -i "s|powerlinepath|$POWERLINEPATH|g" /home/$UN/.config/bash/bashrc-glob
   if [ ! -f /etc/bash.bashrc.ori ]; then
     sudo cp /etc/bash.bashrc /etc/bash.bashrc.ori
   fi
