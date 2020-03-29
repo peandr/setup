@@ -38,15 +38,20 @@ if [ -d /home/$UN/ ]; then
   sudo bash -c "echo ""source /home/$UN/.config/bash/bashrc-glob"" >> /etc/bash.bashrc"
   #
   if [ ! -f /root/.bashrc.ori ]; then
-  	sudo cp /root/.bashrc /root/.bashrc.ori
+  	sudo mv /root/.bashrc /root/.bashrc.ori
+	else
+		sudo rm .bashrc
   fi
-	sudo cp /home/peandr/.config/bash/.bashrc-root /root/.bashrc
+	sudo ln -sf  /home/peandr/.config/bash/.bashrc-root /root/.bashrc
 
 	if [ ! -f /home/$UN/.bashrc.ori ]; then
-  	sudo cp /home/$UN/.bashrc /home/$UN/.bashrc.ori
+    mv /home/$UN/.bashrc /home/$UN/.bashrc.ori
+	else
+		rm .bashrc
   fi
-  cp /home/$UN/.bashrc.ori /home/$UN/.bashrc
-  echo "source /home/$UN/.config/bash/.bashrc-pa" >> /home/$UN/.bashrc
+	ln -sf /home/$UN/.config/bash/.bashrc-pa .bashrc
+  #cp /home/$UN/.bashrc.ori /home/$UN/.bashrc
+  #echo "source /home/$UN/.config/bash/.bashrc-pa" >> /home/$UN/.bashrc
   # --------------------------------------------------------------------------
 
   # --- config VIMRC for root and user ---------------------------------------
