@@ -37,7 +37,12 @@ if [ -d /home/$UN/ ]; then
   sudo cp /etc/bash.bashrc.ori /etc/bash.bashrc
   sudo bash -c "echo ""source /home/$UN/.config/bash/bashrc-glob"" >> /etc/bash.bashrc"
   #
-  if [ ! -f /home/$UN/.bashrc.ori ]; then
+  if [ ! -f /root/.bashrc.ori ]; then
+  	sudo cp /root/.bashrc /root/.bashrc.ori
+  fi
+	sudo cp /home/peandr/.config/bash/.bashrc-root /root/.bashrc
+
+	if [ ! -f /home/$UN/.bashrc.ori ]; then
   	sudo cp /home/$UN/.bashrc /home/$UN/.bashrc.ori
   fi
   cp /home/$UN/.bashrc.ori /home/$UN/.bashrc
