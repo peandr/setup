@@ -38,6 +38,9 @@ if [ -d /home/$UN/ ]; then
   sudo bash -c "cat ""/home/$UN/.config/bash/append-to-glob-bashrc"" >> /etc/bash.bashrc"
   rm /home/$UN/.config/bash/append-to-glob-bashrc
 
+	if [ ! -f /root/.bashrc ]; then
+		touch /root/.bashrc
+	fi
 	if [ ! -f /root/.bashrc.ori ]; then
   	sudo mv /root/.bashrc /root/.bashrc.ori
 	else
