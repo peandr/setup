@@ -126,12 +126,9 @@ if [ -d /home/$UN/ ]; then
 	[ ! -d /root/.config/neofetch/ ] && sudo mkdir /root/.config/neofetch
 	sudo ln -sf /home/peandr/.config/neofetch/config.conf /root/.config/neofetch/config.conf
 
-	GR=$(id -g -n)
-	UN=$(whoami)
-	if [ ! -d /home/$UN/share/ ]; then
-		mkdir share
-	fi
-	sudo mount -t cifs -o username=peandr,password=rdnaep,uid=$UN,gid=$GR //raspberrypi/peandr /home/$UN/share/
+	wget http://raspberrypi/sh/mount-share-linux.sh
+	mkdir /home/$UN/.local/sh
+	mv mount-share-linux.sh /home/$UN/.local/sh/mount-share.sh
 
 	sudo reboot
 else
