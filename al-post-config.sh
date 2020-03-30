@@ -127,7 +127,7 @@ if [ -d /home/$UN/ ]; then
 	sudo ln -sf /home/peandr/.config/neofetch/config.conf /root/.config/neofetch/config.conf
 
 	wget http://raspberrypi/sh/mount-share-linux.sh
-	mkdir /home/$UN/.local/sh
+	mkdir -p /home/$UN/.local/sh
 	mv mount-share-linux.sh /home/$UN/.local/sh/mount-share.sh
 
 	sudo reboot
