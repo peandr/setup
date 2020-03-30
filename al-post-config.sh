@@ -35,7 +35,7 @@ if [ -d /home/$UN/ ]; then
     sudo cp /etc/bash.bashrc /etc/bash.bashrc.ori
   fi
 	sudo cp /etc/bash.bashrc.ori /etc/bash.bashrc
-  sudo bash -c "echo ""source /home/$UN/.config/bash/append-to-glob-bashrc"" >> /etc/bash.bashrc"
+  sudo bash -c "cat ""/home/$UN/.config/bash/append-to-glob-bashrc"" >> /etc/bash.bashrc"
   rm /home/$UN/.config/bash/append-to-glob-bashrc
 
 	if [ ! -f /root/.bashrc.ori ]; then
@@ -122,6 +122,14 @@ if [ -d /home/$UN/ ]; then
 	# --- neofetch for root ---------------------------------------------------
 	[ ! -d /root/.config/neofetch/ ] && sudo mkdir /root/.config/neofetch
 	sudo ln -sf /home/peandr/.config/neofetch/config.conf /root/.config/neofetch/config.conf
+
+	GR=$(id -g -n)
+	UN=$(whoami)
+	if [ ! -d /home/$UN/share/ ]; then
+		mkdir share
+	fi
+	sudo mount -t cifs -o username=peandr,password=rdnaep,uid=$UN,gid=$GR //raspberrypi/peandr /home/$UN/share/
+
 	sudo reboot
 else
   echo " User $UN does NOT exist on host $HOSTNAME!"
