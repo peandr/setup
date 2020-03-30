@@ -30,29 +30,28 @@ if [ -d /home/$UN/ ]; then
 
   # --- config BASH for root and user
   POWERLINEPATH=`sudo find /usr -name powerline.sh | grep 'bash'`
-  sudo sed -i "s|powerlinepath|$POWERLINEPATH|g" /home/$UN/.config/bash/bashrc-glob
+  sudo sed -i "s|powerlinepath|$POWERLINEPATH|g" /home/$UN/.config/bash/.xtra
   if [ ! -f /etc/bash.bashrc.ori ]; then
     sudo cp /etc/bash.bashrc /etc/bash.bashrc.ori
   fi
 	sudo cp /etc/bash.bashrc.ori /etc/bash.bashrc
-  sudo bash -c "echo ""source /home/$UN/.config/bash/bashrc-glob"" >> /etc/bash.bashrc"
+  sudo bash -c "echo ""source /home/$UN/.config/bash/append-to-glob-bashrc"" >> /etc/bash.bashrc"
+  rm /home/$UN/.config/bash/append-to-glob-bashrc
 
 	if [ ! -f /root/.bashrc.ori ]; then
   	sudo mv /root/.bashrc /root/.bashrc.ori
 	else
-		sudo rm .bashrc
+		sudo mv /root/.bashrc.ori /root/.bashrc
   fi
-	sudo ln -sf  /home/peandr/.config/bash/.bashrc-root /root/.bashrc
+	sudo bash -c "echo ""source /etc/bash.bashrc"" >> /root/.bashrc"
   #
 
   if [ ! -f /home/$UN/.bashrc.ori ]; then
     mv /home/$UN/.bashrc /home/$UN/.bashrc.ori
 	else
-		rm .bashrc
+		mv /home/$UN/.bashrc.ori /home/$UN/.bashrc
   fi
-	ln -sf /home/$UN/.config/bash/.bashrc-pa /home/$UN/.bashrc
-	#cp /home/$UN/.bashrc.ori /home/$UN/.bashrc
-  #echo "source /home/$UN/.config/bash/.bashrc-pa" >> /home/$UN/.bashrc
+	echo "source /etc/bash.bashrc" >> /home/$UN/.bashrc
   # --------------------------------------------------------------------------
 
   # --- config VIMRC for root and user ---------------------------------------
