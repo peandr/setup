@@ -49,6 +49,12 @@ if [ -d /home/$UN/ ]; then
 	# install build-essential
 	# sudo apt-get install libncurses5-dev libncursesw5-dev
 
+	cd /home/$UN/git
+	git clone https://github.com/powerline/fonts.git
+	cd fonts
+		./install.sh
+	cd
+
 	grep $UN /etc/sudoers &> /dev/null
 	if [ $? -ne 0 ]; then
 		echo "$UN  ALL=(ALL:ALL) ALL" >> /etc/sudoers
