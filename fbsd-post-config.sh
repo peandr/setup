@@ -89,6 +89,13 @@ if [ -d /home/$UN/ ]; then
   fi
   sudo ln -sf /home/$UN/.config/vifm /root/.config
   sudo ln -sf /home/$UN/.config/ranger /root/.config
+
+	if [ ! -d /home/$UN/git/fonts/ ]; then
+	  git clone https://github.com/powerline/fonts.git
+	  cd fonts
+	  ./install.sh
+ 	  cd ../
+	fi
   #
   # --- instal PLUG for VIM -------------------------------------------------
   curl -fLo /home/$UN/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
