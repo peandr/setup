@@ -34,10 +34,9 @@ if [ -d /home/$UN/ ]; then
     sudo csh -c "echo ""source /home/$UN/.config/bash/.cshrc-root"" >> /root/.cshrc"
   fi
 
-	grep 'source' /home/$UN/.bash_profile
+	grep 'append-to-bash' /home/$UN/.bash_profile
 	if [ $? -ne 0 ]; then
-    echo "source /home/$UN/.config/bash/bashrc-glob" >> /home/$UN/.bash_profile
-    echo "source /home/$UN/.config/bash/.bashrc-pa" >> /home/$UN/.bash_profile
+    cat "/home/$UN/.config/bash/append-to-bash-profile" >> /home/$UN/.bash_profile
   fi
 	if [ -f /home/$UN/.bashrc ]; then
 		rm /home/$UN/.bashrc
@@ -102,7 +101,16 @@ if [ -d /home/$UN/ ]; then
   mv /home/$UN/.config/vim/UltiSnips /home/$UN/.vim/plugged/ultisnips
 	sudo csh -c "echo ""permit nopass peandr cmd shutdown"" >> /usr/local/etc/doas.conf"
 	sudo csh -c "echo ""permit nopass peandr cmd pkg"" >> /usr/local/etc/doas.conf"
-  #sudo reboot
+
+	# --- neofetch for root ---------------------------------------------------
+	[ ! -d /root/.config/neofetch/ ] && sudo mkdir /root/.config/neofetch
+	sudo ln -sf /home/peandr/.config/neofetch/config.conf /root/.config/neofetch/config.conf
+
+	wget http://raspberrypi/sh/mount-share-fbsd.sh
+	chmod 700 mount-share-fbsd.sh
+	mkdir -p /home/$UN/.local/sh
+	mv mount-share-fbsd.sh /home/$UN/.local/sh/mount-share.sh
+  sudo reboot
 else
   echo " User $UN does NOT exist on host $HOSTNAME!"
 fi
