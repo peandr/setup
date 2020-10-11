@@ -32,6 +32,7 @@ if [ -d /home/$UN/ ]; then
 
 	install xorg-server
 	install xorg-xinit
+	install xterm
 	install feh
 
 	if [ ! -d /home$UN/pictures/ ]; then
