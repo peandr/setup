@@ -31,7 +31,7 @@ if [ -d /home/$UN/ ]; then
 	}
 
 	install xorg-server
-	install xorg-init
+	install xorg-xinit
 	install feh
 
 	if [ ! -d /home$UN/pictures/ ]; then
@@ -54,7 +54,7 @@ if [ -d /home/$UN/ ]; then
 	sudo make clean install
 	cd
 	echo "setxkbmap ch" >> /home/$UN/.xinitrc
-	echo "feh --bg-fill ~/pictures/game-code.jpg" >> /home/$UN/.xinitrc
+	echo "feh --bg-fill ~/pictures/wallpapers/game-code.jpg" >> /home/$UN/.xinitrc
 	echo "exec dwm"  >> /home/$UN/.xinitrc
 
 else
