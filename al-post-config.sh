@@ -7,6 +7,7 @@
 # ------------------------------------------------------------------------------
 
 clear
+WWWHN=raspi
 echo " ----------------------------------------------------------------------- "
 echo " `uname -a`"
 
@@ -24,8 +25,7 @@ if [ -d /home/$UN/ ]; then
 		mkdir /home/$UN/.config
   fi
   tar -C /home/$UN/.config/ -xvf linux-dotfiles.tar.gz
-  sudo rm -r linux-dotfiles.tar.gz
-  rm /home/$UN/.config/linux-dotfiles.tar.gz
+  rm /home/$UN/git/linux-dotfiles.tar.gz
   # --------------------------------------------------------------------------
 
   # --- config BASH for root and user
@@ -35,8 +35,11 @@ if [ -d /home/$UN/ ]; then
     sudo cp /etc/bash.bashrc /etc/bash.bashrc.ori
   fi
 	sudo cp /etc/bash.bashrc.ori /etc/bash.bashrc
-  sudo bash -c "cat ""/home/$UN/.config/bash/append-to-glob-bashrc"" >> /etc/bash.bashrc"
-  rm /home/$UN/.config/bash/append-to-glob-bashrc
+  sudo bash -c "echo ""source /home/$UN/.config/bash/.aliases"" >> /etc/bash.bashrc"
+  sudo bash -c "echo ""source /home/$UN/.config/bash/.exports"" >> /etc/bash.bashrc"
+  sudo bash -c "echo ""source /home/$UN/.config/bash/.functions"" >> /etc/bash.bashrc"
+  sudo bash -c "echo ""source /home/$UN/.config/bash/.prompt"" >> /etc/bash.bashrc"
+  sudo bash -c "echo ""source /home/$UN/.config/bash/.xtra"" >> /etc/bash.bashrc"
 
 	if [ ! -f /root/.bashrc ]; then
 		touch /root/.bashrc
@@ -82,9 +85,6 @@ if [ -d /home/$UN/ ]; then
   if [ ! -d /home/$UN/.vim/plugin/ ]; then
    mkdir /home/$UN/.vim/plugin
   fi
-  if [ ! -f /home/$UN/.vim/plugin/html-umlaute.vim ]; then
-    mv /home/$UN/.config/vim/html-umlaute.vim /home/$UN/.vim/plugin
-  fi
   #
   # --- config TMUX for root and user  --------------------------------------
   POWERLINEPATH=`sudo find /usr -name powerline.conf | grep 'tmux'`
@@ -126,7 +126,7 @@ if [ -d /home/$UN/ ]; then
 	[ ! -d /root/.config/neofetch/ ] && sudo mkdir /root/.config/neofetch
 	sudo ln -sf /home/peandr/.config/neofetch/config.conf /root/.config/neofetch/config.conf
 
-	wget http://raspberrypi/sh/mount-share-linux.sh
+	wget http://$WWWHN/sh/mount-share-linux.sh
 	chmod 700 mount-share-linux.sh
 	mkdir -p /home/$UN/.local/sh
 	mv mount-share-linux.sh /home/$UN/.local/sh/mount-share.sh
