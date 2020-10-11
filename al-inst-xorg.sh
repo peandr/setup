@@ -30,7 +30,8 @@ if [ -d /home/$UN/ ]; then
 		fi
 	}
 
-	install xorg-server
+	install dmenu
+	install xorg
 	install xorg-xinit
 	install xterm
 	install feh
