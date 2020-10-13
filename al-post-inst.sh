@@ -39,7 +39,7 @@ if [ -d /home/$UN/ ]; then
 
 	sudo grep $UN /etc/sudoers &> /dev/null
 	if [ $? -ne 0  ]; then
-		sudo 'echo "$UN  ALL=(ALL:ALL) ALL" >> /etc/sudoers'
+		sudo bash -c 'echo "$UN  ALL=(ALL:ALL) ALL" >> /etc/sudoers'
 	else
 		echo " User $UN is in SUDOERS-file!"
 	fi
